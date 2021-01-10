@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="demo" extends="struts-default" namespace="/">
+		<action name="login" class="action.Login" method="login">
+			<result name="success">/success.html</result>
+			<result name="error">/login_error.html</result>
+		</action>
+		<action name="register" class="action.Add_User" method="add"></action>
+	</package>
+</struts>
