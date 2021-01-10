@@ -32,6 +32,6 @@
 		
 		<!-- 3.添加映射文件  必须配置-->
 		<mapping resource="user/User.hbm.xml"/>
-		
+		<mapping resource="music/Music.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

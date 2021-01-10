@@ -8,10 +8,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
+import music.Music;
 import user.User;
 
 public class Database_Dao {
-	private static User user = new User();
 	
 //	1.创建configuration对象
 //	获取src目录下的核心配置文件hibernate.cfg.xml 将文件放到创建的configuration对象中 也可以概括为 加载核心配置文件
@@ -32,16 +32,16 @@ public class Database_Dao {
 	
 //	5.操作数据库
 //	添加用户
-	public void addinfo(User user) {
-		this.user = new User();
-		this.user.setName(user.getName());
-		this.user.setPassword(user.getPassword());
-		this.user.setAge(user.getAge());
-		this.user.setAddress(user.getAddress());
-		this.user.setSex(user.getSex());
-		this.user.setPhone(user.getPhone());
+	public void addinfo(User inuser) {
+		User user = new User();
+		user.setName(inuser.getName());
+		user.setPassword(inuser.getPassword());
+		user.setAge(inuser.getAge());
+		user.setAddress(inuser.getAddress());
+		user.setSex(inuser.getSex());
+		user.setPhone(inuser.getPhone());
 //		调用session的save方法实现添加
-		session.save(this.user);
+		session.save(user);
 		
 //		6.提交事务
 		tx.commit();
@@ -83,5 +83,26 @@ public class Database_Dao {
 		session.beginTransaction();
 		
 		return result;
+	}
+	
+//	添加音乐信息
+	public void addmusic(Music inmusic) {
+		Music music = new Music();
+		music.setName(inmusic.getName());
+		music.setSinger(inmusic.getSinger());
+		music.setTime(inmusic.getTime());
+		music.setUrl(inmusic.getUrl());
+//		调用session的save方法实现添加
+		session.save(music);
+		
+//		6.提交事务
+		tx.commit();
+		
+//		开启事务  使用户能够提交其他事务
+		session.beginTransaction();
+		
+//		7.关闭资源
+//		session.close();
+//		sessionFactory.close();
 	}
 }

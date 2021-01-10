@@ -9,5 +9,6 @@
 			<result name="error">/login_error.html</result>
 		</action>
 		<action name="register" class="action.Add_User" method="add"></action>
+		<action name="addmusic" class="action.Add_Music" method="add"></action>
 	</package>
 </struts>
