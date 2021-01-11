@@ -10,5 +10,6 @@
 		</action>
 		<action name="register" class="action.Add_User" method="add"></action>
 		<action name="addmusic" class="action.Add_Music" method="add"></action>
+		<action name="allmusic" class="action.Music_list" method="show"></action>
 	</package>
 </struts>

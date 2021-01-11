@@ -105,4 +105,11 @@ public class Database_Dao {
 //		session.close();
 //		sessionFactory.close();
 	}
+	
+//	查询所有音乐信息
+	public List<Music> allmusic() {
+		Criteria musCriteria = session.createCriteria(Music.class);
+		List<Music> musics = musCriteria.list();
+		return musics;
+	}
 }
