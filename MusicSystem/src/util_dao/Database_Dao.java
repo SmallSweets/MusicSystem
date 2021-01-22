@@ -112,4 +112,16 @@ public class Database_Dao {
 		List<Music> musics = musCriteria.list();
 		return musics;
 	}
+	
+//	删除音乐信息
+	public void delete(int id) {
+//		使用唯一标识来获取要删除的数据 唯一标识为int类型
+		Music delinfoMusic = session.find(Music.class, id);
+//		删除数据
+		session.delete(delinfoMusic);
+//		提交
+		tx.commit();
+//		开启事务
+		session.beginTransaction();
+	}
 }

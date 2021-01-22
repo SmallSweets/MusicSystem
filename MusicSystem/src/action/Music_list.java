@@ -60,7 +60,7 @@ public class Music_list extends ActionSupport {
 				out.println("</td>");
 				out.println("<td>");
 					out.println("<a href='update_music.jsp'><button>¸üĞÂ</button></a>");
-					out.println("<a href=''><button>É¾³ı</button></a>");
+					out.println("<a href='deletemusic?id="+music.getId()+"'><button>É¾³ı</button></a>");
 				out.println("</td>");
 			out.println("</tr>");
 		}

@@ -11,5 +11,9 @@
 		<action name="register" class="action.Add_User" method="add"></action>
 		<action name="addmusic" class="action.Add_Music" method="add"></action>
 		<action name="allmusic" class="action.Music_list" method="show"></action>
+		<action name="deletemusic" class="action.Delete_Music" method="delete">
+			<!-- 从一个action跳转到另一个action -->
+			<result name="success" type="redirectAction">/allmusic</result>
+		</action>
 	</package>
 </struts>
