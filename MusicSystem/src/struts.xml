@@ -8,12 +8,22 @@
 			<result name="success">/success.html</result>
 			<result name="error">/login_error.html</result>
 		</action>
+		<!-- 用户注册action -->
 		<action name="register" class="action.Add_User" method="add"></action>
+		<!-- 添加音乐的action -->
 		<action name="addmusic" class="action.Add_Music" method="add"></action>
+		<!-- 显示所有音乐的action -->
 		<action name="allmusic" class="action.Music_list" method="show"></action>
+		<!-- 删除音乐action -->
 		<action name="deletemusic" class="action.Delete_Music" method="delete">
 			<!-- 从一个action跳转到另一个action -->
 			<result name="success" type="redirectAction">/allmusic</result>
+		</action>
+		<!-- 管理员登录action -->
+		<action name="adminlogin" class="action.Admin_Login" method="admin_login">
+			<!-- 跳转到管理员主页面 -->
+			<result name="success">/admin_page.html</result>
+			<result name="error">/admin_login_error.html</result>
 		</action>
 	</package>
 </struts>

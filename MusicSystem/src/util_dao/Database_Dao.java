@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
+import admin.Admin;
 import music.Music;
 import user.User;
 
@@ -54,7 +55,7 @@ public class Database_Dao {
 //		sessionFactory.close();
 	}
 	
-//	登录用
+//	普通用户登录用
 	public boolean uselogin(String name,String password) {
 		boolean result = true;
 //		从数据库中查询信息 通过实体类操作数据库
@@ -66,6 +67,37 @@ public class Database_Dao {
 		try {
 //			当users不为空时 说明满足查询条件 数据库中存在该用户  当数据不满足查询条件时 users为空 所以执行此代码会报错
 			users.get(0).getName();
+			result = true;
+//			但出现错误时执行此部分代码 说明数据库中没有该用户
+		}catch (Exception e) {
+			result = false;
+			// TODO: handle exception
+		}
+		
+//      开启一个新的事务Transaction
+//        session.beginTransaction();
+        
+//		6.提交事务
+		tx.commit();
+		
+//		提交事务后 再次开启事务 用户可以进行多次提交  在此处不开启事务  用户只能提交一次用户名和密码
+		session.beginTransaction();
+		
+		return result;
+	}
+	
+//	管理员登录用
+	public boolean adminlogin(String name,String password) {
+		boolean result = true;
+//		从数据库中查询信息 通过实体类操作数据库
+		Criteria adminCriteria = session.createCriteria(Admin.class);
+//		查询条件
+		adminCriteria.add(Restrictions.and(Restrictions.eq("Name", name),Restrictions.and(Restrictions.eq("Password", password))));
+//		将查询到的用户对象转换为列表形式
+		List<Admin> admins = adminCriteria.list();
+		try {
+//			当users不为空时 说明满足查询条件 数据库中存在该用户  当数据不满足查询条件时 users为空 所以执行此代码会报错
+			admins.get(0).getName();
 			result = true;
 //			但出现错误时执行此部分代码 说明数据库中没有该用户
 		}catch (Exception e) {
